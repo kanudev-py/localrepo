@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Stripes Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="backdrop-section">
+        <img src="Screenshot 2025-07-30 203531.png" alt="" id="backdrop1" />
+        
+        <!-- Left side stripes -->
+        <div class="stripe-container left-stripes">
+            <div class="stripe red-stripe" data-offset="-20%">
+                <span class="stripe-text">"A PHOTOGRAPHIC SHOOT-OUT TO HIP-HOP"</span>
+                <span class="stripe-source">-FINANCIAL TIMES</span>
+            </div>
+            <div class="stripe yellow-stripe" data-offset="-40%">
+                <span class="stripe-text">"OUTKAST HONORED WITH LIMITED EDITION STATUE"</span>
+                <span class="stripe-source">-VIBE</span>
+            </div>
+            <div class="stripe red-stripe" data-offset="-60%">
+                <span class="stripe-text">"CELEBRATES GOLDEN ANNIVERSARY AT YANKEE STADIUM"</span>
+                <span class="stripe-source">-VIBE</span>
+            </div>
+        </div>
+        
+        <!-- Right side stripes -->
+        <div class="stripe-container right-stripes">
+            <div class="stripe yellow-stripe" data-offset="20%">
+                <span class="stripe-text">"MORE EMBRACE 'SISTERHOOD' AS YOUNG WOMEN"</span>
+                <span class="stripe-source">-ROLLING STONE</span>
+            </div>
+            <div class="stripe red-stripe" data-offset="40%">
+                <span class="stripe-text">"BREAKING BARRIERS IN MODERN CULTURE"</span>
+                <span class="stripe-source">-BILLBOARD</span>
+            </div>
+            <div class="stripe yellow-stripe" data-offset="60%">
+                <span class="stripe-text">"REVOLUTIONARY IMPACT ON MUSIC INDUSTRY"</span>
+                <span class="stripe-source">-PITCHFORK</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Additional content for scrolling -->
+    <section style="height: 100vh; background: #333; color: white; display: flex; align-items: center; justify-content: center;">
+        <h2>Continue scrolling to see the effect</h2>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#backdrop-section {
+    position: relative;
+    height: 300vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#backdrop1 {
+    height: 300vh;
+    width: 100vw;
+    object-fit: cover;
+    margin: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.stripe-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.stripe {
+    position: absolute;
+    height: 120px;
+    width: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    transform: skewY(-8deg);
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.1s ease-out;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.red-stripe {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: white;
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+}
+
+.yellow-stripe {
+    background: linear-gradient(135deg, #ffff00, #cccc00);
+    color: black;
+    box-shadow: 0 8px 32px rgba(255, 255, 0, 0.3);
+}
+
+.stripe-text {
+    flex: 1;
+    text-align: left;
+}
+
+.stripe-source {
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+/* Left side stripes - initially positioned off-screen to the left */
+.left-stripes .stripe:nth-child(1) {
+    top: 15%;
+    left: -80%;
+}
+
+.left-stripes .stripe:nth-child(2) {
+    top: 35%;
+    left: -90%;
+}
+
+.left-stripes .stripe:nth-child(3) {
+    top: 55%;
+    left: -70%;
+}
+
+/* Right side stripes - initially positioned off-screen to the right */
+.right-stripes .stripe:nth-child(1) {
+    top: 25%;
+    right: -80%;
+}
+
+.right-stripes .stripe:nth-child(2) {
+    top: 45%;
+    right: -90%;
+}
+
+.right-stripes .stripe:nth-child(3) {
+    top: 65%;
+    right: -70%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .stripe {
+        height: 80px;
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    
+    .stripe-source {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stripe {
+        height: 60px;
+        font-size: 12px;
+        padding: 0 15px;
+    }
+    
+    .stripe-source {
+        font-size: 10px;
+    }
+}
