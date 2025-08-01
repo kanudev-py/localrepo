@@ -42,5 +42,48 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Scroll-triggered stripe animation
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            const scrollProgress = Math.min(scrollY / (maxScroll * 0.3), 1); // Only affect first 30% of scroll
+            
+            const stripes = document.querySelectorAll('.scroll-text');
+            
+            stripes.forEach((stripe, index) => {
+                const isLeftSide = index % 2 === 0; // Even indices go to left, odd to right
+                const baseTransform = 'skew(-15deg)';
+                
+                if (scrollProgress <= 1) {
+                    if (isLeftSide) {
+                        // Left side stripes: start from far left, move toward center
+                        const translateX = -100 + (scrollProgress * 50); // From -100% to -50%
+                        stripe.style.transform = `${baseTransform} translateX(${translateX}%)`;
+                    } else {
+                        // Right side stripes: start from far right, move toward center
+                        const translateX = 50 - (scrollProgress * 50); // From 50% to 0%
+                        stripe.style.transform = `${baseTransform} translateX(${translateX}%)`;
+                    }
+                }
+            });
+        });
+
+        // Initial positioning
+        document.addEventListener('DOMContentLoaded', () => {
+            const stripes = document.querySelectorAll('.scroll-text');
+            stripes.forEach((stripe, index) => {
+                const isLeftSide = index % 2 === 0;
+                const baseTransform = 'skew(-15deg)';
+                
+                if (isLeftSide) {
+                    stripe.style.transform = `${baseTransform} translateX(-100%)`;
+                } else {
+                    stripe.style.transform = `${baseTransform} translateX(50%)`;
+                }
+            });
+        });
+    </script>
 </body>
 </html>

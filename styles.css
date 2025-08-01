@@ -12,7 +12,7 @@ body {
 
 #backdrop-section {
     position: relative;
-    height: 100vh;
+    height: 300vh;
     width: 100vw;
     overflow: hidden;
 }
@@ -21,7 +21,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 300vh;
     width: 100vw;
     object-fit: cover;
     z-index: 1;
@@ -29,11 +29,11 @@ body {
 }
 
 .scroll-text-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@ body {
 
 .scroll-text {
     height: 80px;
-    width: 100%;
+    width: 200%;
     display: flex;
     align-items: center;
     font-weight: 900;
@@ -51,10 +51,11 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     transform: skew(-15deg);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease-out;
 }
 
 .scroll-text span {
@@ -83,31 +84,17 @@ body {
     border-bottom: 3px solid #ff0000;
 }
 
-/* Left scrolling animation */
-.left-scroll span {
-    animation-name: scrollLeft;
+/* Text scrolling animation within stripes */
+.scroll-text span {
+    animation-name: scrollText;
 }
 
-/* Right scrolling animation */
-.right-scroll span {
-    animation-name: scrollRight;
-}
-
-@keyframes scrollLeft {
+@keyframes scrollText {
     0% {
-        transform: translateX(100vw);
+        transform: translateX(100%);
     }
     100% {
         transform: translateX(-100%);
-    }
-}
-
-@keyframes scrollRight {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100vw);
     }
 }
 
@@ -120,12 +107,6 @@ body {
 .scroll-text:nth-child(6) span { animation-delay: -12.5s; }
 
 /* Hover effects */
-.scroll-text:hover {
-    animation-play-state: paused;
-    transform: skew(-15deg) scale(1.05);
-    transition: transform 0.3s ease;
-}
-
 .scroll-text:hover span {
     animation-play-state: paused;
 }
