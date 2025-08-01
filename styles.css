@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial Black', Arial, sans-serif;
+    overflow-x: hidden;
+    background: #000;
+}
+
+#backdrop-section {
+    position: relative;
+    height: 300vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#backdrop1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300vh;
+    width: 100vw;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7) contrast(1.2);
+}
+
+.scroll-text-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    pointer-events: none;
+}
+
+.scroll-text {
+    height: 80px;
+    width: 200%;
+    display: flex;
+    align-items: center;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: visible;
+    position: relative;
+    transform: skew(-15deg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease-out;
+}
+
+.scroll-text span {
+    display: inline-block;
+    padding: 0 50px;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Red stripe styling */
+.red-stripe {
+    background: linear-gradient(45deg, #ff0000, #ff3333, #cc0000);
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    border-top: 3px solid #ffff00;
+    border-bottom: 3px solid #ffff00;
+}
+
+/* Yellow stripe styling */
+.yellow-stripe {
+    background: linear-gradient(45deg, #ffff00, #ffff66, #cccc00);
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    border-top: 3px solid #ff0000;
+    border-bottom: 3px solid #ff0000;
+}
+
+/* Text scrolling animation within stripes */
+.scroll-text span {
+    animation-name: scrollText;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Stagger animation delays for smooth continuous flow */
+.scroll-text:nth-child(1) span { animation-delay: 0s; }
+.scroll-text:nth-child(2) span { animation-delay: -2.5s; }
+.scroll-text:nth-child(3) span { animation-delay: -5s; }
+.scroll-text:nth-child(4) span { animation-delay: -7.5s; }
+.scroll-text:nth-child(5) span { animation-delay: -10s; }
+.scroll-text:nth-child(6) span { animation-delay: -12.5s; }
+
+/* Hover effects */
+.scroll-text:hover span {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .scroll-text {
+        height: 60px;
+        font-size: clamp(1rem, 3vw, 2rem);
+        letter-spacing: 1px;
+    }
+    
+    .scroll-text span {
+        padding: 0 30px;
+        animation-duration: 20s;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-text {
+        height: 50px;
+        font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+        transform: skew(-10deg);
+    }
+    
+    .scroll-text span {
+        padding: 0 20px;
+        animation-duration: 25s;
+    }
+}
+
+/* Additional visual enhancements */
+.scroll-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Background pattern overlay */
+#backdrop-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px
+        );
+    z-index: 2;
+    pointer-events: none;
+}
